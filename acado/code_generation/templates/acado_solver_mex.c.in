@@ -530,7 +530,7 @@ void mexFunction(	int nlhs,
 	setArray(info, 0, "simTime", &simTime, 1, 1);
 	setArray(info, 0, "kktValue", &kktValue, 1, 1);
 	setArray(info, 0, "objValue", &objValue, 1, 1);
-#if @MODULE_PREFIX@_QP_SOLVER == @MODULE_PREFIX@_HPMPC
+#if ( (@MODULE_PREFIX@_QP_SOLVER == @MODULE_PREFIX@_QPOASES) || (@MODULE_PREFIX@_QP_SOLVER == @MODULE_PREFIX@_QPOASES3) || (@MODULE_PREFIX@_QP_SOLVER == @MODULE_PREFIX@_HPMPC) || (@MODULE_PREFIX@_QP_SOLVER == @MODULE_PREFIX@_QPDUNES))
 	setArray(info, 0, "nIterations", &nIterations, 1, 1);
 #endif /* ( (@MODULE_PREFIX@_QP_SOLVER == @MODULE_PREFIX@_QPOASES) || (@MODULE_PREFIX@_QP_SOLVER == @MODULE_PREFIX@_QPOASES3) ) */
 
