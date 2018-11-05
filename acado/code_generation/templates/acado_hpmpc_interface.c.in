@@ -285,8 +285,10 @@ int acado_hpmpc_ip_wrapper( real_t* A, real_t* B, real_t* b,
 	hub[0] = work; work += nb;
 	hC[0] = work; work += nx*ng;
 	hD[0] = work; work += nu*ng;
-	hpi[0] = work; work += nx;
-	hlam[0] = work; work += 2*nb + 2*ng;
+	// hpi[0] = work; work += nx;
+	hpi[0] = &lambda[ii*nx];
+	// hlam[0] = work; work += 2*nb + 2*ng;
+	hlam[0] = &mu[ii*(nx+nu)];
 	ht[0] = work; work += 2*nb + 2*ng;
 	// middle stage
 	for(ii=1; ii<N; ii++)
@@ -307,8 +309,10 @@ int acado_hpmpc_ip_wrapper( real_t* A, real_t* B, real_t* b,
 		hD[ii] = work; work += nu*ng;
 		hlg[ii] = &lbA[ii*ng]; //work; work += ng;
 		hug[ii] = &ubA[ii*ng]; //work; work += ng;
-		hpi[ii] = work; work += nx;
-		hlam[ii] = work; work += 2*nb + 2*ng;
+		// hpi[ii] = work; work += nx;
+		hpi[ii] = &lambda[ii*nx];
+		// hlam[ii] = work; work += 2*nb + 2*ng;
+		hlam[ii] = &mu[ii*(nx+nu)];
 		ht[ii] = work; work += 2*nb + 2*ng;
 	}
 	// middle stage
@@ -321,7 +325,8 @@ int acado_hpmpc_ip_wrapper( real_t* A, real_t* B, real_t* b,
 	hC[ii] = work; work += nx*ngN;
 //	hlg[ii] = work; work += ngN; // TODO
 //	hug[ii] = work; work += ngN; // TODO
-	hlam[ii] = work; work += 2*nb + 2*ngN;
+	// hlam[ii] = work; work += 2*nb + 2*ngN;
+	hlam[ii] = &mu[ii*(nx+nu)];
 	ht[ii] = work; work += 2*nb + 2*ngN;
 
 
