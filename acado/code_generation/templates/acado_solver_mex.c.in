@@ -507,7 +507,7 @@ void mexFunction(	int nlhs,
 	setArray(plhs[ 0 ], 0, "u", @MODULE_NAME@Variables.u, @MODULE_PREFIX@_N, @MODULE_PREFIX@_NU);
 #if @MODULE_PREFIX@_QP_SOLVER == @MODULE_PREFIX@_HPMPC
 	setArray(plhs[ 0 ], 0, "lam", @MODULE_NAME@Workspace.qpLambda, @MODULE_PREFIX@_NX*@MODULE_PREFIX@_N, 1);
-	setArray(plhs[ 0 ], 0, "mu", @MODULE_NAME@Workspace.qpMu, (@MODULE_PREFIX@_N + 1)*(@MODULE_PREFIX@_NX + @MODULE_PREFIX@_NU), 1);
+	setArray(plhs[ 0 ], 0, "mu", @MODULE_NAME@Workspace.qpMu, 2*(@MODULE_PREFIX@_N + 1)*(@MODULE_PREFIX@_NX + @MODULE_PREFIX@_NU), 1);
 #endif /* @MODULE_PREFIX@_QP_SOLVER */
 #if @MODULE_PREFIX@_NXA > 0
 	setArray(plhs[ 0 ], 0, "z", @MODULE_NAME@Variables.z, @MODULE_PREFIX@_N, @MODULE_PREFIX@_NXA);
